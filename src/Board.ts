@@ -34,6 +34,7 @@ export class Board {
         return new Board (this.cells) //возврат нового объекта типа Board
     }
 
+
     private static fromString(str: string): Cell[] | null {
         // TODO
         // Переписывает из str символы в this.cells
