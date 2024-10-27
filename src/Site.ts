@@ -8,6 +8,7 @@ type Saving = {
     key: string
     game: Game
 }
+//var nowGame: State
 
 // Класс позволяет сохранять и восстанавливать игры
 export class Site {
@@ -19,6 +20,8 @@ export class Site {
     save() {
         // TODO
         // сохраняет текущую игру в массив Games
+        this.Games[this.game.current].key = new Date().toLocaleString()
+        this.Games[this.game.current].game = this.game
     }
 
     load(index: number) {

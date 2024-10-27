@@ -5,10 +5,7 @@ export class State {
     board: Board
     sym: Cell
 
-    constructor(
-        board: Board = new Board(),
-        sym: Cell = "X"
-    ) {
+    constructor(board: Board = new Board(), sym: Cell = "X") {
         this.board = board
         this.sym = sym
     }

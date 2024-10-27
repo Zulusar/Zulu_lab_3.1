@@ -1,32 +1,30 @@
 import { State } from "./State"
 
+let boardNew: State
 // Класс служит для определения типа объекта game из предыдущей работы с дополнительными методами.
 export class Game {
-    // Состояния игры
-    steps: State[]
-    // Текущее состояние игры
-    current: number
+    steps: State[] // Состояния игры
+    current: number // Текущее состояние игры
 
-    constructor(
-        steps: State[] = [new State()],
-        current: number = 0
-    ) {
+    constructor(steps: State[] = [new State()], current: number = 0 ) {
         // TODO
         // Корректно инициализируйте переменные:
-        this.steps = []
-        this.current = 0
+        this.steps = steps
+        this.current = current
+        //this.steps[this.current]
+
     }
 
     get state(): State {
         // TODO
         // Сеттер должен возвращать текущее состояние игры
-        return new State()
+        return this.steps[0]
     }
 
     clone() {
         // TODO
         // Функция должна вернуть копию объекта
-        return this        
+        return this   
     }
 
     move(index: number): boolean {
@@ -37,7 +35,21 @@ export class Game {
         //  обновляет current и возвращает true, иначе возвращает false
         // Нужно учесть, что если вызывалась функция toStep, то 
         //  current можно указывать не на последний элемент steps
-        return true  
+        this.state.board.status()
+        if(this.state.board.status()!="Идет игра") return false
+        else{
+            if(this.current % 2 == 0) {
+                this.state.sym = "X"
+            }
+            if(this.current % 2 != 0) {
+                this.state.sym = "0"
+            }
+            if(this.state.board.move(index, this.state.sym) == true){
+                this.state.board.move(index, this.state.sym)
+            }
+            this.current ++
+            return true
+        }
     }
 
     toStep(step: number) {

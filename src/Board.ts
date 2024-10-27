@@ -15,12 +15,23 @@ export class Board {
         // TODO
         // Используя сужения типа заполните this.cells
         this.cells = []
+        if(typeof str === "string"){
+            const strFirst = str.split("")
+            for(let i = 0; i < str.length; i++){
+                this.cells.splice(i, 0, strFirst[i] as Cell) 
+            }
+        }
+        else{
+            for(let i = 0; i<str.length; i++){
+                this.cells.splice(i, 0, str[i])
+            }
+        }
     }
 
     clone(): Board {
         // TODO
         // Функция должна вернуть копию объекта
-        return this
+        return new Board (this.cells) //возврат нового объекта типа Board
     }
 
     private static fromString(str: string): Cell[] | null {
@@ -35,14 +46,24 @@ export class Board {
     isFill(): boolean {
         // TODO
         // Возвращет true если на доске нет пустых клеток
-        return true
+        var count = 0
+        for(let i = 0; i<this.cells.length; i++){
+            if(this.cells[i] == "_") count ++
+            else count = 0
+        }
+        return (count = 0)? true: false
     }
 
     move(index: number, cell: Cell): boolean {
         // TODO
         // Если ячейка this.cell[index] занята - возвращает false
+        if(this.cells[index]!= "_") return false
+        else{
+            this.cells[index] = cell
+            return true
+        }
         // Записывает в ячейку cell и возвращает true
-        return true
+
     }
 
     private getLineChar(line: number[]): Cell[] {
@@ -70,9 +91,13 @@ export class Board {
 
 
     status(): string {
+        this.isFill()
+        if(this.isFill() == true) return "Ничья"
+        //if(this.checkWin()!= "_") return `Победил ${this.checkWin}`
+        else return "Идет игра"
         // TODO
         // возвращает либо строку с результатом игры, либо, 
         //   если игра не закончена, строку "Идет игра".
-        return "Идет игра"
+       
     }
 }
