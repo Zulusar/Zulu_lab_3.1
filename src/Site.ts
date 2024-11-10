@@ -5,11 +5,11 @@ import { State } from "./State";
 // key рекомендуется инициализировать 
 //  с помощью new Date().toLocaleString()
 type Saving = {
-    key: string
+    key: string 
     game: Game
 }
 //var nowGame: State
-
+let data = new Date().toLocaleString()
 // Класс позволяет сохранять и восстанавливать игры
 export class Site {
     // Текущая игра
@@ -17,10 +17,11 @@ export class Site {
     // Сохраненные игры
     Games: Saving[] = []
 
+    
     save() {
         // TODO
         // сохраняет текущую игру в массив Games
-        this.Games[this.game.current].key = new Date().toLocaleString()
+        this.Games[this.game.current].key = data as string
         this.Games[this.game.current].game = this.game
     }
 
@@ -32,6 +33,6 @@ export class Site {
     keys(): string[] {
         // TODO
         // вовзращает список ключей игр из массива Games
-        return []
+        return [ new Date().toLocaleString()]
     }
 }

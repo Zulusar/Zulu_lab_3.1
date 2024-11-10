@@ -39,12 +39,13 @@ export class Game {
         //this.state.board.status() //проверка на возможность хода
         if(this.state.board.status() != "Идет игра") return false // если не идет игра - конец
         else{
+            let boardNew = this.state.clone()
+            this.steps.push(boardNew)
             if(this.current % 2 == 0) this.state.sym = "X"
             if(this.current % 2 != 0) this.state.sym = "0"
             this.state.board.move(index, this.state.sym)//если все ок - делается ход
-            let boardNew = this.state.clone()
             //boardNew = this.clone()
-            this.steps.push(boardNew) //добавление копии в массив
+             //добавление копии в массив
             this.current ++ //увеличение счетчика
             this.toStep
             return true
