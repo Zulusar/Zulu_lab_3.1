@@ -98,7 +98,6 @@ export class Board {
         return data
     }
 
-
     status(): string {
         this.isFill()
         if(this.isFill() == true) return "Ничья"
