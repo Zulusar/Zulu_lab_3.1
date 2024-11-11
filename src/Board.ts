@@ -6,7 +6,7 @@ export function isCell(sym: string): sym is Cell {
     // Возвращает true если sym типа Cell, иначе false
     return true
 }
-
+//let data = "_"
 // Класс служит для определения типа объекта board из предыдущей работы с дополнительными методами.
 export class Board {
     cells: Cell[]
@@ -50,9 +50,9 @@ export class Board {
         var count = 0
         for(let i = 0; i<this.cells.length; i++){
             if(this.cells[i] == "_") count ++
-            else count = 0
+            else count == 0
         }
-        return (count = 0)? true: false
+        return (count == 0)? true: false
     }
 
     move(index: number, cell: Cell): boolean {
@@ -87,14 +87,22 @@ export class Board {
         // Если имеется комбинация из трех одинаковых символов "X" или "0" 
         //  в линию - возвращает этот символ
         // Иначе возвращает символ "_"
-        return "_"
+        let data = "_"
+        for(let i = 0; i < Board.winPos.length; i++){
+            if (this.getLineChar(Board.winPos[i])[0] == this.getLineChar(Board.winPos[i])[1]  && this.getLineChar(Board.winPos[i])[0] == this.getLineChar(Board.winPos[i])[2]&& this.getLineChar(Board.winPos[i])[0] != "_") {
+                data = this.getLineChar(Board.winPos[i])[0]
+                break
+            }
+            else  data = "_"   
+        }
+        return data
     }
 
 
     status(): string {
         this.isFill()
         if(this.isFill() == true) return "Ничья"
-        //if(this.checkWin()!= "_") return `Победил ${this.checkWin}`
+        if(this.checkWin()!= "_") return `Победил ${this.checkWin()}`
         else return "Идет игра"
         // TODO
         // возвращает либо строку с результатом игры, либо, 

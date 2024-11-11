@@ -16,13 +16,14 @@ export class Site {
     game: Game = new Game()
     // Сохраненные игры
     Games: Saving[] = []
-
     
     save() {
         // TODO
         // сохраняет текущую игру в массив Games
-        this.Games[this.game.current].key = data as string
-        this.Games[this.game.current].game = this.game
+        let count = 0
+        this.Games[count].key == data.toString()
+        this.Games[count].game == this.game
+        count ++
     }
 
     load(index: number) {
@@ -33,6 +34,6 @@ export class Site {
     keys(): string[] {
         // TODO
         // вовзращает список ключей игр из массива Games
-        return [ new Date().toLocaleString()]
+        return [new Date().toLocaleString()]
     }
 }

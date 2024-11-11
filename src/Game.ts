@@ -15,7 +15,7 @@ export class Game {
     }
 
     get state(): State {
-        // TODO
+        // TODO         
         // Сеттер должен возвращать текущее состояние игры
         //count = this.current
         return this.steps[count]
@@ -35,17 +35,14 @@ export class Game {
         //  обновляет current и возвращает true, иначе возвращает false
         // Нужно учесть, что если вызывалась функция toStep, то 
         //  current можно указывать не на последний элемент steps
-        //count = this.current
-        //this.state.board.status() //проверка на возможность хода
-        if(this.state.board.status() != "Идет игра") return false // если не идет игра - конец
+        this.state.board.status() //проверка на возможность хода
+        if (this.state.board.status() != "Идет игра") return false
         else{
             let boardNew = this.state.clone()
             this.steps.push(boardNew)
             if(this.current % 2 == 0) this.state.sym = "X"
             if(this.current % 2 != 0) this.state.sym = "0"
             this.state.board.move(index, this.state.sym)//если все ок - делается ход
-            //boardNew = this.clone()
-             //добавление копии в массив
             this.current ++ //увеличение счетчика
             this.toStep
             return true
