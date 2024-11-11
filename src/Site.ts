@@ -23,7 +23,7 @@ export class Site {
     save() {
         // TODO
         // сохраняет текущую игру в массив Games
-        newKeys.key = structuredClone (new Date().toLocaleString())
+        newKeys.key = structuredClone (new Date().toLocaleString())//перезаписывает все значения в массиве
         newKeys.game = structuredClone(this.game)
         //count.push(newKeys.key)
         this.Games.push(newKeys)
