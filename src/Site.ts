@@ -24,7 +24,7 @@ export class Site {
         // TODO
         // сохраняет текущую игру в массив Games
         let newKeys: Saving = {key: new Date().toLocaleString(), game: new Game}
-        newKeys.key = structuredClone (new Date().toLocaleString())//перезаписывает все значения в массиве
+        newKeys.key = structuredClone (new Date().toLocaleString())//все ок
         newKeys.game = structuredClone(this.game)
         this.Games.unshift(newKeys)
         }
@@ -32,13 +32,7 @@ export class Site {
     load(index: number) {
         // TODO
         // загружает игру по ее индексу в массиве
-        //for(let i = 0; i<this.game.state.board.cells.length; i++){
-        //    this.game.state.board.cells[i] == this.Games[index].game.state.board.cells[i]
-        //}
-        //this.game.state.board = structuredClone (this.Games[index].game.state.board)
-        //let newGame: State
-        //newGame = this.Games[index].game.state.clone()
-        //this.game.state = newGame
+        //this.game = structuredClone(this.Games[index].game)
         this.game = structuredClone(this.Games[index].game)
     }
 
