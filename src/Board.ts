@@ -35,7 +35,7 @@ export class Board {
     }
 
 
-    private static fromString(str: string): Cell[] | null {
+    private static fromString(str: string): Cell[] | null {//где это испольуется и зачем это надо? не могу обратиться из обычного поля
         // TODO
         // Переписывает из str символы в this.cells
         // Если длина строки не равна 9, возвращает null

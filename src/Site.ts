@@ -10,8 +10,9 @@ type Saving = {
 }
 //var nowGame: State
 let data = new Date().toLocaleString()
-let newKeys: Saving = {key: new Date().toLocaleString(), game: new Game}
-let newKey: string []
+let newKeys: Saving 
+//let newKey: string []
+let keysBoard: string[] 
 let count = 0
 // Класс позволяет сохранять и восстанавливать игры
 export class Site {
@@ -23,22 +24,22 @@ export class Site {
     save() {
         // TODO
         // сохраняет текущую игру в массив Games
-        let newKeys: Saving = {key: new Date().toLocaleString(), game: new Game}
-        newKeys.key = structuredClone (new Date().toLocaleString())//все ок
-        newKeys.game = structuredClone(this.game)
-        this.Games.unshift(newKeys)
+        const newKeys: Saving = {key: new Date().toLocaleString(), game: this.game.clone()}
+        this.Games.push(newKeys)
         }
-
+ 
     load(index: number) {
         // TODO
         // загружает игру по ее индексу в массиве
-        //this.game = structuredClone(this.Games[index].game)
-        this.game = structuredClone(this.Games[index].game)
+        return this.game.state.board = this.Games[index].game.state.board.clone()
+        //this.game.state.board.status() == "Идет игра"
     }
 
-    keys(): string[] {
+    keys(): string[] {//для чего он нужен и где он используется?
         // TODO
         // вовзращает список ключей игр из массива Games
-        return []
+        keysBoard.push(newKeys.key)
+        return keysBoard
+         
     }
 }

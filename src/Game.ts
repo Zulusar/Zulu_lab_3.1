@@ -1,13 +1,14 @@
 import { State } from "./State"
 
 let boardNew: State
+
 var count: number = 0
 // Класс служит для определения типа объекта game из предыдущей работы с дополнительными методами.
 export class Game {
     steps: State[] // Состояния игры
     current: number // Текущее состояние игры
 
-    constructor(steps: State[] = [new State()], current: number = 0 ) {
+    constructor(steps: State[] = [new State()], current: number = 0) {
         // TODO
         // Корректно инициализируйте переменные:
         this.steps = steps
@@ -24,8 +25,13 @@ export class Game {
     clone() {
         // TODO
         // Функция должна вернуть копию объекта
-        //return new State(this.steps[this.current].clone(), this.steps[this.current].sym)
-    }
+        let newSteps: State[] 
+        newSteps = this.steps
+        for(let i=0; i<this.steps.length; i++){
+            newSteps[i] = this.steps[i].clone()
+        }
+        return new Game (newSteps, this.current)
+        }       
 
     move(index: number): boolean {
         // TODO        
@@ -40,6 +46,8 @@ export class Game {
         else{
             let boardNew = this.state.clone()
             this.steps.push(boardNew)
+            //newSteps.push(boardNew.clone())
+            //newSteps = this.steps
             if(this.current % 2 == 0) this.state.sym = "X"
             if(this.current % 2 != 0) this.state.sym = "0"
             this.state.board.move(index, this.state.sym)//если все ок - делается ход
@@ -49,7 +57,7 @@ export class Game {
         }
     }
 
-    toStep(step: number) {
+    toStep(step: number) {//как сделать правильный отсчет после возврата на определенную доску?
          // TODO
         // Проверяет, что в steps есть элемент с индексом step,
         //  если нет то возвращает false
