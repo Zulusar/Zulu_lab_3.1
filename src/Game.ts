@@ -1,7 +1,7 @@
 import { State } from "./State"
 
 let boardNew: State
-
+let newSteps: State[]
 var count: number = 0
 // Класс служит для определения типа объекта game из предыдущей работы с дополнительными методами.
 export class Game {
@@ -25,12 +25,7 @@ export class Game {
     clone() {
         // TODO
         // Функция должна вернуть копию объекта
-        let newSteps: State[] 
-        newSteps = this.steps
-        for(let i=0; i<this.steps.length; i++){
-            newSteps[i] = this.steps[i].clone()
-        }
-        return new Game (newSteps, this.current)
+        return new Game (structuredClone(this.steps), this.current)
         }       
 
     move(index: number): boolean {

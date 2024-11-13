@@ -9,7 +9,7 @@ type Saving = {
     game: Game
 }
 //var nowGame: State
-let data = new Date().toLocaleString()
+//let data = new Date().toLocaleString()
 let newKeys: Saving 
 //let newKey: string []
 let keysBoard: string[] 
@@ -31,8 +31,7 @@ export class Site {
     load(index: number) {
         // TODO
         // загружает игру по ее индексу в массиве
-        return this.game.state.board = this.Games[index].game.state.board.clone()
-        //this.game.state.board.status() == "Идет игра"
+        return this.game = this.Games[index].game.clone()
     }
 
     keys(): string[] {//для чего он нужен и где он используется?
