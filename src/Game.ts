@@ -1,8 +1,5 @@
 import { State } from "./State"
 
-let boardNew: State
-
-var count: number = 0
 // Класс служит для определения типа объекта game из предыдущей работы с дополнительными методами.
 export class Game {
     steps: State[] // Состояния игры
@@ -19,7 +16,7 @@ export class Game {
         // TODO         
         // Сеттер должен возвращать текущее состояние игры
         //count = this.current
-        return this.steps[count]
+        return this.steps[this.current]
     }
 
     clone() {
@@ -43,13 +40,11 @@ export class Game {
         this.state.board.status() //проверка на возможность хода
         if (this.state.board.status() != "Идет игра") return false
         else{
-            let boardNew = this.state.clone()
-            this.steps.push(boardNew)
-            //newSteps.push(boardNew.clone())
-            //newSteps = this.steps
             if(this.current % 2 == 0) this.state.sym = "X"
             if(this.current % 2 != 0) this.state.sym = "0"
             this.state.board.move(index, this.state.sym)//если все ок - делается ход
+            let boardNew = this.state.clone()
+            this.steps.push(boardNew)
             this.current ++ //увеличение счетчика
             this.toStep
             return true
@@ -65,9 +60,10 @@ export class Game {
             return false
         }
         else {
-            this.steps[count] = this.steps[step].clone()
-            count = step //переприсваивание step
-            this.current = count //переписывание счетчика
+            this.steps[this.current] = this.steps[step].clone()
+            if(step % 2 != 0) this.state.sym = "X"
+            //count = step //переприсваивание step
+            this.current == step //переписывание счетчика
             return true
         }      
     }

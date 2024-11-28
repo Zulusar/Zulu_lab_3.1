@@ -8,12 +8,10 @@ type Saving = {
     key: string 
     game: Game
 }
-//var nowGame: State
-//let data = new Date().toLocaleString()
+
 let newKeys: Saving 
-//let newKey: string []
 let keysBoard: string[] 
-let count = 0
+
 // Класс позволяет сохранять и восстанавливать игры
 export class Site {
     // Текущая игра

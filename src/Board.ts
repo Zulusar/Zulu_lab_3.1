@@ -6,7 +6,6 @@ export function isCell(sym: string): sym is Cell {
     // Возвращает true если sym типа Cell, иначе false
     return true
 }
-//let data = "_"
 // Класс служит для определения типа объекта board из предыдущей работы с дополнительными методами.
 export class Board {
     cells: Cell[]
@@ -31,17 +30,21 @@ export class Board {
     clone(): Board {
         // TODO
         // Функция должна вернуть копию объекта
-        return new Board (this.cells) //возврат нового объекта типа Board
+        let newBoard = new Board//клонирование игры
+        for(let i=0; i<this.cells.length; i++){//по-другому не получается
+            newBoard.cells[i] = this.cells[i]
+        }
+        return newBoard //возврат нового объекта типа Board
     }
 
 
-    private static fromString(str: string): Cell[] | null {//где это испольуется и зачем это надо? не могу обратиться из обычного поля
+    private static fromString(str: string): Cell[] | null {
         // TODO
         // Переписывает из str символы в this.cells
         // Если длина строки не равна 9, возвращает null
         // Если встретиться символ не из Cell возвращает null
         // Если преобразование прошло успешно возвращает true
-        return null        
+        return null       
     }
 
     isFill(): boolean {
@@ -63,8 +66,6 @@ export class Board {
             this.cells[index] = cell
             return true
         }
-        // Записывает в ячейку cell и возвращает true
-
     }
 
     private getLineChar(line: number[]): Cell[] {

@@ -13,7 +13,8 @@ export class State {
     clone(): State {
         // TODO
         // Функция должна вернуть копию объекта
-        return new State(this.board.clone(), this.sym)
+        let newState = new State(this.board.clone(), this.sym)
+        return newState
     }
 
 }
